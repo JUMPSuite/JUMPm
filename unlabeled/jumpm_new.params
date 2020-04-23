@@ -1,0 +1,120 @@
+##############################################
+## Parameter file for JUMPm as of 2019/10/9 ##
+##############################################
+
+#####################################
+## Determination of search methods ##
+#####################################
+database_search = 1    # 0 = do not search a database, 1 = search a database (database should be specified)
+library_search = 1     # 0 = do not search a library,  1 = search a library  (library should be specified)
+
+########################################################
+## Parameters for search methods and output directory ##
+########################################################
+database = HMDB,YMDB   # database type: PUBCHEM, YMDB, HMDB (use "," to combine multiple databases if you want to search a combined database)
+library = /home/jcho/dev/JUMPm/Metabolome_library_v0.1.4.txt        # path of .txt file containing library compound information                       
+output_name = test     # Used for unlabeled data analysis. Prefix "align_" will be automatically added
+
+mass_formula_database = /home/jcho/dev/JUMPm_database/MASS_FORMULA_DB      # mass formula database   
+structure_database = /home/jcho/dev/JUMPm_database/STRUCTURE_DB            # structure database
+formula_mass_tolerance_searching = 10    # mass tolerance for searching formula (ppm)
+
+####################################
+## Parameters for data properties ##
+####################################
+LC_column = HILIC      # type of LC column, e.g. HILIC, C18, C4, etc.
+mode = -1              # 1 = positive mode, -1 = negative mode
+adduct = 1             # 0 = disable adduct detection, 1 = enable
+
+###############################################
+## Whether skip the feature detection or not ##
+###############################################
+skip_feature_detection = 1       # 0 = don't skip (i.e. perform feature detection), 1 = skip
+## If you choose 'skip_feature_detection = 1', then specify absolute path(s) of feature file(s) separated by new line
+## Note that .mzXML file(s) should be located in the same place where the following .feature file(s) are
+feature_files = /home/htan/2019/IROA_library/neg/oldalgorithm/IROA_IS_NEG_1/IROA_IS_NEG_1.1.feature
+/home/htan/2019/IROA_library/neg/oldalgorithm/IROA_IS_NEG_2/IROA_IS_NEG_2.1.feature
+/home/htan/2019/IROA_library/neg/oldalgorithm/IROA_IS_NEG_3/IROA_IS_NEG_3.1.feature
+
+#######################################
+## Parameters for processing spectra ##
+#######################################
+data_acquisition_mode = 2        # 1 = centroid, 2 = profile for full scan and centroid for MS/MS scan 
+first_scan_extraction = 1        # the first scan used for search			 
+last_scan_extraction = 100       # the last scan used for search
+isolation_window = 1             # isolation window size 1= +/-0.5
+mass_correction = 0              # 0 = no correction, 1 = MS1-based
+decharge_ppm = 10                # intrascan isotopic tolerance for decharging
+deisotope_ppm = 10               # intrascan isotopic tolerance for decharging
+
+###########################################################
+## Parameters for feature detection (for advanced users) ##
+###########################################################
+signal_noise_ratio = 10          # fold of the minimum signal noise ratio
+max_percentage_RT_range = 100    # threshold maximum percentage of the range of retention time of a peak
+min_peak_intensity = 10000       # threshold of a peak intensity
+skipping_scans = 10              # number of skipping scans during 3D formation 
+mass_tolerance_peak_matching = 3 # mass tolerance for peak matching during 3D formation
+
+###########################################################
+## Parameters for feature alignment (for advanced users) ##
+###########################################################
+reference_feature = 0            # 0 = reference feature is automatically chosen,
+                                 # otherwise put the absolute path of a feature file to be used as a reference
+tol_initial = 20                 # initial m/z-tolerance for the global calibration (default = 20 ppm)
+sd_width = 5                     # SD-width for RT- and m/z-tolerances 
+                                 # (when finding "matched/aligned" features, default = 5)
+skip_loading_bias_correction = 1 # 0 = don't skip (i.e. perform loading-bias correction/normalization), 1 = skip
+rescue = 1                       # 1 = rescue unaligned features by loosening RT- and m/z-tolerances; 0 = no
+
+## RT- and m/z-tolerance settings in rescueing step (possibly multiple times)
+rt_tolerance_unit = 1, 2         # 1 = SD-width of dynamic RT-shifts, 2 = seconds
+rt_tolerance_value = 10, 10      # RT-tolerance value(s) according to the above unit(s)
+mz_tolerance_unit = 1, 2         # 1 = SD-width of dynamic m/z-shifts, 2 = ppm
+mz_tolerance_value = 10, 10      # m/z-tolerance value(s) according to the above unit(s)
+pct_full_alignment = 100         # percentage of samples are grouped into a feature
+
+#############################################################################
+## Parameters for processing MS2 spectra for features (for advanced users) ##
+#############################################################################
+tol_precursor = 10               # PPM tolerance for finding a MS1 peak corresponding to a feature
+tol_intra_ms2_consolidation = 10 # PPM tolerance for merging MS2 spectra within a run
+tol_inter_ms2_consolidation = 20 # PPM tolerance for merging MS2 spectra between runs
+
+#########################################
+## Parameters for matching MS2 spectra ##
+#########################################
+fragment_method = 1              # 1 = metfrag; 2 = CFM-ID 
+percentage_ms2_peaks = 50        # in percentage (50 = 50%); number of MS2 peaks used for matching 
+frag_mass_tolerance = 0.01       # mass tolerance for MS2 ion matching
+frag_mass_tolerance_unit = 1     # 1 = Da; 2 = PPM;
+matched_scan_dist = 500          # scan number between MS2 and MS1 containing MS2 precursor
+                                 # matched MISSILE pairs
+
+###################################
+## Parameters for cluster system ##
+###################################
+cluster = 1                      # 1 = cluster; 0 = single server
+job_management_system = LSF      # other systems (e.g. LSF & PBS) may be used
+
+###############################
+## Adducts for positive mode ##
+###############################
+#adduct_NH3 = 17.0271024
+#adduct_Na = 21.9825
+#adduct_K = 37.956438
+#adduct_CH3O = 32.026769
+#adduct_ACN = 41.0271024
+#adduct_ACNNa = 63.0090478
+#adduct_2ACN = 82.0536502
+
+###############################
+## Adducts for negative mode ##
+###############################
+adduct_Cl = 35.97612871
+adduct_HCOO = 46.0049306
+adduct_CH3COO = 60.0205798
+adduct_2H = -1.007825
+adduct_-2H+Na = 21.9813968
+adduct_-2H+K = 37.9553348
+#adduct_CH2O2 = 46.00547931

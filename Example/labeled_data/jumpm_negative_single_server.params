@@ -1,0 +1,67 @@
+##########################################################################################
+##                   Parameter file for JUMPm                                            #
+##                 version 1.6.6, Date: 10/05/2016                                        #
+##########################################################################################
+
+labeled_data = 0                                                                         # 1 = labeled data; 0 = unlabeled data
+library_search = 0                                                                       # 1 = library search; only enable for unlabeled data; 0 = disable
+mode = -1                                                                                # 1= positive mode; -1 = negative mode
+
+labeled_ID_method = 2                                                                    # 1 = mass only;
+                   									 # 2= MISSILE combined with #C and #N;
+                   						                         # 3 = MISSILE combined with #C;
+                   						                         # 4=MISSILE combined with N# 
+adduct = 1                                                                               # 0 = disable adduct detection; 1 = enable
+## Database settings
+database = HMDB,YMDB                                                                     # database type: PUBCHEM, YMDB, HMDB; use "," to combine two databases if you want to search a combined database
+mass_formula_database = /home/xwang4/JUMPm_database/new                      # mass formula database   
+structure_database = /home/xwang4/JUMPm_database/STRUCTURE_DB                            # structure database
+
+## mass tolerance for matching between mono mass (C12) and formula
+formula_mass_tolerance_searching = 50                                                     # mass tolerance for formula search (ppm)
+
+## parameters for isotopic peirs 
+c12_c13_tolerance = 4                                                                    # tolerance between C12 and C15; unit in Da 
+c12_n15_tolerance = 4                                                                    # tolerance between C12 and C15; unit in Da 
+tolerance_unit = 2                                                                       # 1=Da; 2=ppm
+relative_isotopes_intensity = 0.1                                                        # minimal relative intensity between paired isotopes
+min_pair_correlation = 0.5                                                               # minimal pairing correlation coefficient
+cluster_tolerance = 4                                                                    # from version 0.1.5 change ppm into cluster_tolerance (tolerance for clustering step) 
+
+## Preprocessing parameters
+first_scan_extraction = 0 							 
+last_scan_extraction = 1200                                                          # the last scan used for search
+isolation_window = 1                                                                     # isolation window size 1= +/-0.5
+mass_correction = 0                                                                      # 0 = no correction, 1 = MS1-based
+decharge_ppm = 16                                                                        # intrascan isotopic tolerance for decharging
+deisotope_ppm = 16                                                                       # intrascan isotopic tolerance for decharging
+## Noise filtering
+signal_noise_ratio = 10                                                                   # fold of the minimum signal noise ratio
+
+## parameters for labeling normalization 
+loading_normalization = 0
+formula_mass_tolerance_pairing = 10                                                       # use it for the first round of search to estimate label mixing ratio
+
+## MS2 matching
+fragment_method = 1                                                                      # 1 = metfrag; 2 = CFM-ID 
+percentage_ms2_peaks = 50                                                                # in percentage (50 = 50%); number of MS2 peaks used for matching 
+frag_mass_tolerance = 0.01                                                               # mass tolerance for MS2 ion matching
+frag_mass_tolerance_unit = 1                                                             # 1 = Da; 2 = PPM;
+matched_scan_dist = 500                                                                   # scan number between MS2 and MS1 containing MS2 precursor matched MISSILE pairs
+
+## Raw data processing
+data_acquisition_mode = 1                                                                # 1 = centroid, 2 = profile for full scan and centroid for MS/MS scan 
+
+## Cluster job system
+cluster = 0                                                                              # 1 = cluster; 0 = single server
+job_management_system = SGE                                                              # SGE used by current cluster; other systems (e.g. LSF & PBS) may be used
+processor_number = 10                                                                    # processor number when cluster = 0
+## falsified peak mass
+mass_shift = 4.5                                                                           # Unit: ppm
+decoy_strategy = 3
+##########################################################################################
+#adduct_Cl = 34.96885271
+#adduct_CH2O2 = 46.00547931
+#adduct_C2H4O2 = 60.02112937
+#adduct_C2HF3O2 = 113.9928639
+

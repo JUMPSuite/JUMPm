@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Cwd 'abs_path';
+use Getopt::Long;
+use FindBin qw($Bin);
+use lib "$Bin/unlabeled";
+use Spiders::Params;
+
+my $paramFile;
+GetOptions('-p=s' => \$paramFile);
+if (!-e ($paramFile)) {
+	print "Please input the parameter file\n\n";
+	exit;
+}
+$paramFile = abs_path($paramFile);
+
+# Loading parameters
+my $p = Spiders::Params -> new('-path' => $paramFile);
+my $params = $p -> parseParams();
+
+if ($$params{'labeled_data'} == 0) {
+	my $cmd = "perl $Bin/unlabeled/jumpm_unlabeled.pl -p $paramFile " . join(" ", @ARGV);
+	system($cmd);
+} elsif ($$params{'labeled_data'} == 1) {
+	my $cmd = "perl $Bin/labeled/jumpm_labeled.pl -p $paramFile " . join(" ", @ARGV);
+	system($cmd)
+} else {
+	print "'labeled_data' parameter should be either 0 (unlabeled) or 1 (labeled)\n";
+	exit;
+}
+
