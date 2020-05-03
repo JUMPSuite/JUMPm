@@ -80,8 +80,8 @@ Database Setup
 The database can be downloaded from [http://www.stjuderesearch.org/site/lab/peng](http://www.stjuderesearch.org/site/lab/peng), including mass formula database and structure database.
 After downloading databases, please uncompress the two databases on your local directory and set the two paths in the parameter file.  
 
-MASS_FORMULA_DB: [http://ftp.stjude.org/pub/software/JUMPm/MASS_FORMULA_DB.tar.gz](http://ftp.stjude.org/pub/software/JUMPm/MASS_FORMULA_DB.tar.gz)
-STRUCTURE_DB: [http://ftp.stjude.org/pub/software/JUMPm/STRUCTURE_DB.tar.gz](http://ftp.stjude.org/pub/software/JUMPm/STRUCTURE_DB.tar.gz)
+* MASS_FORMULA_DB: http://ftp.stjude.org/pub/software/JUMPm/MASS_FORMULA_DB.tar.gz
+* STRUCTURE_DB: http://ftp.stjude.org/pub/software/JUMPm/STRUCTURE_DB.tar.gz
 
 ---
 Command Line Arguments
