@@ -14,7 +14,12 @@ Contents of this file
 ------------ 
 Introduction 
 ------------ 
-JUMPm is a program for untargeted metabolite identification for liquid chromatography and tandem mass spectrometry metabolomics. This program determines chemical formulas from either unlabeled or stable-isotope labeled metabolomics data, and derives possible structures by predictive fragmentation during database search. JUMPm uses a target-decoy strategy based on the octet rule to estimate the rate of false discovery (FDR).  The user specifies a target FDR and JUMPm will filter the data to reach the target.  FDR is a critical measure of confidence which researchers can use in the analysis of their data. The program is written in perl and is designed for high performance parallel computing systems.
+JUMPm is a program for untargeted metabolite identification for liquid chromatography and tandem mass spectrometry metabolomics. 
+This program determines chemical formulas from either unlabeled or stable-isotope labeled metabolomics data, and derives possible structures by predictive fragmentation during database search. 
+JUMPm uses a target-decoy strategy based on the octet rule to estimate the rate of false discovery (FDR).  
+The user specifies a target FDR and JUMPm will filter the data to reach the target.  
+FDR is a critical measure of confidence which researchers can use in the analysis of their data. 
+The program is written in perl and is designed for high performance parallel computing systems.
   
 ---------------------
 Software Requirements
