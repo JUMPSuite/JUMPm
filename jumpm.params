@@ -14,10 +14,8 @@ mode = -1              # 1 = positive mode, -1 = negative mode
 ## Parameters for search methods and output directory ##
 ########################################################
 database_search = 1    # 0 = do not search a database, 1 = search a database (database should be specified)
-library_search = 0     # 0 = do not search a library,  1 = search a library  (library should be specified)
 adduct = 1             # 0 = disable adduct detection, 1 = enable
 database = HMDB,YMDB   # database type: PUBCHEM, YMDB, HMDB (use "," to combine multiple databases if you want to search a combined database)
-library = /home/usr/JUMPm_database/Metabolome_library.txt        # path of .txt file containing library compound information                       
 output_name = test     # Used for unlabeled data analysis. Prefix "align_" will be automatically added
 mass_formula_database = /home/usr/JUMPm_database/MASS_FORMULA_DB      # mass formula database   
 structure_database = /home/usr/JUMPm_database/STRUCTURE_DB            # structure database
